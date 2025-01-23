@@ -6,15 +6,15 @@ using UnityEngine;
 public class fishpatrol : MonoBehaviour
 {
     [SerializeField]float maxdist;
-    //Ray r;
     Vector3 direction;
     [SerializeField] float speed;
-    //[SerializeField]int l;
+    Rigidbody2D rb;
+  
     // Start is called before the first frame update
     void Start()
     {
         int i = Random.Range(0, 3);
-
+        rb = gameObject.GetComponent<Rigidbody2D>();
         if(i==1)
          direction = Vector3.left+Vector3.up;
         else
@@ -29,11 +29,7 @@ public class fishpatrol : MonoBehaviour
     void Update()
     {
         transform.Translate(direction * speed * Time.deltaTime);
-        //r = new Ray(transform.position, -transform.right);
-
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.right,maxdist,1<<l);
-
-        //Debug.Log(hit.collider.gameObject.name);
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,6 +38,17 @@ public class fishpatrol : MonoBehaviour
         {
             direction = -direction;
             transform.localScale= new Vector3(-transform.localScale.x,transform.localScale.y,transform.localScale.z);
+        }
+        
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "player")
+        {
+            direction = -direction;
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+
+            
         }
     }
 }
