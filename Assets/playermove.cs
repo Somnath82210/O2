@@ -57,7 +57,7 @@ public class playermove : MonoBehaviour
                 death();
             }
         }
-        
+
 
     }
 
@@ -66,20 +66,20 @@ public class playermove : MonoBehaviour
         //Debug.Log(collision.gameObject.name);
         if (collision.gameObject.layer == 8)
         {
-            //if (p.oxlevel < 100)
-            //{
-            //    if (p.oxlevel >= 95)
-            //    {
-            //        p.oxlevel += 100 - p.oxlevel;
-            //    }
-            //    else
-            //    {
-            //        p.oxlevel += 5f;
-            //    }
-                
-            //}
+            if (p.oxlevel < 100)
+            {
+                if (p.oxlevel >= 95)
+                {
+                    p.oxlevel += 100 - p.oxlevel;
+                }
+                else
+                {
+                    p.oxlevel += 5f;
+                }
 
-           
+            }
+
+
 
             Destroy(collision.gameObject);
         }
@@ -88,13 +88,13 @@ public class playermove : MonoBehaviour
             val = true;
 
 
-             p.oxlevel -= 5f;
-       
+            p.oxlevel -= 5f;
+
         }
-        
+
         if (collision.gameObject.name == "wall")
         {
-            rb.AddForce(Vector2.right*force,ForceMode2D.Impulse);
+            rb.AddForce(Vector2.right * force, ForceMode2D.Impulse);
             Debug.Log("hit");
         }
         else if (collision.gameObject.name == "wall2")

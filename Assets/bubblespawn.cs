@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bubblespawn : MonoBehaviour
 {
-    [SerializeField]GameObject bubble;
+    [SerializeField] GameObject bubble;
     GameObject obs;
     [SerializeField] float timelimit;
     [SerializeField] float timeinterval;
@@ -18,24 +18,24 @@ public class bubblespawn : MonoBehaviour
     {
         bubblecount = Random.Range(1, 4);
         GameObject wall = transform.parent.gameObject;
-        
+
 
         if (wall.name == "wall")
         {
             transform.localPosition = new Vector3(0.7f, transform.localPosition.y, 0);
         }
-        else if(wall.name == "wall2")
+        else if (wall.name == "wall2")
         {
             transform.localPosition = new Vector3(-0.7f, transform.localPosition.y, 0);
         }
-      
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        obs = transform.parent.parent.gameObject;
+        obs = transform.parent.parent.parent.gameObject;
 
         if (obs.GetComponent<obsmove>().spawnagain)
         {
@@ -68,9 +68,9 @@ public class bubblespawn : MonoBehaviour
             {
                 t2 = 0;
                 val = true;
-             
+
             }
         }
-        
+
     }
 }

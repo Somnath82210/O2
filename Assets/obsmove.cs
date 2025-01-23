@@ -7,8 +7,9 @@ public class obsmove : MonoBehaviour
 {
     [SerializeField] float speed;
     [SerializeField] GameObject fish;
-    [SerializeField]List<GameObject> fspawn= new List<GameObject>();
+    [SerializeField] List<GameObject> fspawn = new List<GameObject>();
     [SerializeField] playerinfo p;
+    [SerializeField] SpriteRenderer s;
     public bool spawnagain;
     //GameObject shark;
 
@@ -18,17 +19,18 @@ public class obsmove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
+
         //shark = transform.GetChild(2).gameObject;
 
         //Debug.Log("Combined Height in World Space: " + height);
 
         foreach (GameObject g in fspawn)
         {
-            Instantiate(fish, g.transform.position, Quaternion.identity,transform);
+            Instantiate(fish, g.transform.position, Quaternion.identity, transform);
         }
         mainCamera = Camera.main;
         //objectHeight = FindChildByName(transform, "wall").transform.localScale.y;
+        objectHeight=s.bounds.size.y;
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class obsmove : MonoBehaviour
 
         if (!p.stop)
         {
-            //spawnagain = false;
+            spawnagain = false;
             transform.Translate(Vector3.down * speed * Time.deltaTime);
 
 
@@ -53,25 +55,25 @@ public class obsmove : MonoBehaviour
                 // Move the object to the top of the camera view
                 transform.position = new Vector3(
                     transform.position.x,
-                    topBound + objectHeight,
+                    topBound + 129.9f,
                     transform.position.z
                 );
                 Debug.Log("hello");
-                //spawnagain = true;
-                //wallspawn w = FindChildByName(transform,"wall").gameObject.GetComponent<wallspawn>();
-                //wallspawn w2 = FindChildByName(transform, "wall2").gameObject.GetComponent<wallspawn>();
-              
-               
-                ////walls should spawn again
-                //w.val = true;
-                //w2.val = true;
+                spawnagain = true;
+                wallspawn w = FindChildByName(transform, "wall").gameObject.GetComponent<wallspawn>();
+                wallspawn w2 = FindChildByName(transform, "wall2").gameObject.GetComponent<wallspawn>();
+
+
+                //walls should spawn again
+                w.val = true;
+                w2.val = true;
 
 
             }
         }
 
 
-        
+
     }
 
     Transform FindChildByName(Transform parent, string name)
@@ -88,6 +90,6 @@ public class obsmove : MonoBehaviour
         return null;
     }
 
-  
+
 
 }
