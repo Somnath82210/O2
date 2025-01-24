@@ -18,7 +18,7 @@ public class bubblefloat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        wall = transform.parent.parent.gameObject;
+        wall = transform.parent.parent.parent.gameObject;
         rb = gameObject.GetComponent<Rigidbody2D>();
 
         // Save the initial position of the bubble

@@ -97,6 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c16c0792505e347a910eae8a3d447a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bubble: {fileID: 913251432187812411, guid: 2dd9ab5a76012b746910eada5803c5fa, type: 3}
-  timelimit: 0.8
-  timeinterval: 8
+  bubble: {fileID: 3456548310864721594, guid: 5307715a240f1af4aba32c9d33125eed, type: 3}
+  timelimit: 0.5
+  timeinterval: 5

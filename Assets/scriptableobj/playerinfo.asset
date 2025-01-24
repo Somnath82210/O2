@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd2632cd2554344e93957f63db6d39c, type: 3}
   m_Name: playerinfo
   m_EditorClassIdentifier: 
-  oxlevel: -3.5684893
-  stop: 1
+  oxlevel: 98.3816
+  stop: 0
   stars: 0
-  deplespeed: 0.8
+  deplespeed: 1.5

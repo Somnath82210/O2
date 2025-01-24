@@ -36,6 +36,7 @@ public class fishpatrol : MonoBehaviour
     {
         if (collision.gameObject.name == "tri" || collision.gameObject.name == "tri2")
         {
+            //Debug.Log("hit");
             direction = -direction;
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
         }

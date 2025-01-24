@@ -6,10 +6,12 @@ using UnityEngine;
 public class obsmove : MonoBehaviour
 {
     [SerializeField] float speed;
-    [SerializeField] GameObject fish;
+    [SerializeField] GameObject[] fish= new GameObject[4];
     [SerializeField] List<GameObject> fspawn = new List<GameObject>();
     [SerializeField] playerinfo p;
     [SerializeField] SpriteRenderer s;
+    [SerializeField] GameObject[] stars;
+
     public bool spawnagain;
     //GameObject shark;
 
@@ -26,7 +28,7 @@ public class obsmove : MonoBehaviour
 
         foreach (GameObject g in fspawn)
         {
-            Instantiate(fish, g.transform.position, Quaternion.identity, transform);
+            Instantiate(fish[Random.Range(0,4)], g.transform.position, Quaternion.identity, transform);
         }
         mainCamera = Camera.main;
         //objectHeight = FindChildByName(transform, "wall").transform.localScale.y;
@@ -44,22 +46,48 @@ public class obsmove : MonoBehaviour
 
 
             // Calculate the bottom of the camera in world space
-            float bottomBound = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
+            //float bottomBound = mainCamera.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
 
             // Check if the object has exited the bottom of the camera view
-            if (transform.position.y + objectHeight / 2 < bottomBound)
-            {
-                // Calculate the top of the camera in world space
-                float topBound = mainCamera.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y;
+            //if (transform.position.y + objectHeight / 2 < bottomBound)
+            //{
+            //    // Calculate the top of the camera in world space
+            //    float topBound = mainCamera.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y;
 
-                // Move the object to the top of the camera view
-                transform.position = new Vector3(
-                    transform.position.x,
-                    topBound + 129.9f,
-                    transform.position.z
-                );
-                Debug.Log("hello");
+            //    // Move the object to the top of the camera view
+            //    transform.position = new Vector3(
+            //        transform.position.x,
+            //        topBound + 129.9f,
+            //        transform.position.z
+            //   );
+
+            //if (transform.position.y < -52)
+            //{
+            //    transform.position = new Vector3(transform.position.x, 138.7f, transform.position.z);
+            //    spawnagain = true;
+            //}
+            //    Debug.Log("hello");
+
+            //    wallspawn w = FindChildByName(transform, "wall").gameObject.GetComponent<wallspawn>();
+            //    wallspawn w2 = FindChildByName(transform, "wall2").gameObject.GetComponent<wallspawn>();
+
+
+            //    //walls should spawn again
+            //    w.val = true;
+            //    w2.val = true;
+
+
+            //}
+
+            if (transform.position.y < -52)
+            {
+
+                transform.position = new Vector3(transform.position.x, 138.7f, transform.position.z);
                 spawnagain = true;
+                foreach(GameObject g in stars)
+                {
+                    g.SetActive(true);
+                }
                 wallspawn w = FindChildByName(transform, "wall").gameObject.GetComponent<wallspawn>();
                 wallspawn w2 = FindChildByName(transform, "wall2").gameObject.GetComponent<wallspawn>();
 
@@ -69,7 +97,9 @@ public class obsmove : MonoBehaviour
                 w2.val = true;
 
 
+
             }
+
         }
 
 

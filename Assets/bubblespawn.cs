@@ -51,7 +51,7 @@ public class bubblespawn : MonoBehaviour
             {
                 c++;
                 GameObject b = Instantiate(bubble, transform.TransformPoint(new Vector3(Random.Range(-1.5f, 1.5f), 0, 0)), Quaternion.identity, transform);
-                float s = Random.Range(2, 5.5f);
+                float s = Random.Range(0.1f, 0.5f);
                 b.transform.localScale = new Vector3(s, s, 0);
                 t = 0;
             }

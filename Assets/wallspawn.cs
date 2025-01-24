@@ -65,10 +65,12 @@ public class wallspawn : MonoBehaviour
                     if (gameObject.name == "wall")
                     {
                         o.transform.rotation = Quaternion.Euler(0, 0, -90);
+                        o.transform.localPosition = new Vector3(0.99f,transform.localPosition.y,transform.localPosition.z);
                     }
                     else if (gameObject.name == "wall2")
                     {
                         o.transform.rotation = Quaternion.Euler(0, 0, 90);
+                        o.transform.localPosition = new Vector3(-0.99f, transform.localPosition.y, transform.localPosition.z);
                     }
                 }
                 else
